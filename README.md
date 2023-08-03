@@ -1,6 +1,8 @@
 # Cisco Cyber Vision API Scripts
 
-These .exe files must be run on a device that can access the Cyber Vision Center from an IP address.
+These .exe files must be run on a device that can access the Cyber Vision Center.  It will prompt for a valid API key and IP address of CV Center.
+
+Files will be output to the current working directory where the scripts are executed.
 
 ## File Descriptions
 
