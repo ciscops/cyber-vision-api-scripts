@@ -6,7 +6,7 @@ Files will be output to the current working directory where the scripts are exec
 
 ## File Descriptions
 
-```cred-var-separated.exe```: This file will generate a credentials and variables report with separate worksheets for devices and components.
+```cred-var-separated.exe```: This file will generate an Excel file with a credentials and variables report with separate worksheets for devices and components.
 
 ```cred-var.exe```: This file will generate a report with only two worksheets: Credentials and Variables. The values for both devices and components will be on the same worksheet.
 
