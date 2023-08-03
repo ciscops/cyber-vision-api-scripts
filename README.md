@@ -12,6 +12,6 @@ Files will be output to the current working directory where the scripts are exec
 
 ```find-kevs.exe```: This file will generate an HTML report of the known exploited vulnerabilities on your network. You must use Cyber Vision to generate a vulnerability report and put that CSV report in the same directory as this file when you run it.
 
-```security-insights-details.exe```: This file will generate a security insights report where each DNS, HTTP, or SMB is further separated by component and its request count.
+```security-insights-details.exe```: This file will generate a detailed security insights report for DNS, HTTP & SMB with individual component details and request counts.
 
-```security-insights.exe```: This file will generate a security insights report which does not include details about the components related to DNS, HTTP, or SMB.
+```security-insights.exe```: This file will generate a security insights summary report.
