@@ -26,9 +26,9 @@ There are two methods that can be used to run these python scripts on a Windows 
 ```diag-file-parser```: This file will generate a summary report of key items from a complete Cyber Vision Center diagnostic bundle.  
 
   >**Instructions:** 
-  1) Generate and download a diagnostic bundle from the Cyber Vision Center
+  1) Generate and download a diagnostic bundle from the Cyber Vision Center.
   2) Unpack the .tgz diagnostic bundle, then unpack the .tar archive, which will result in a folder named 'sbs-diag-export-*yyyymmddhhmmss*'. 
-  3) Execute this utility from the same directory where you placed the diagnostic bundle
+  3) Execute this utility from the same directory where you placed the diagnostic bundle.
   4) When the utility completes, a summary report will be saved as a .txt file to the same directory.
 
 ## Make Your Own Executables
