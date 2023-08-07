@@ -18,7 +18,11 @@ for name in folders:
         folder = name[name.rindex('\\')+1:len(name)]
 
 if len(folder) == 0:
+    print("No diag bundle found.")
     folder = input("Please input the name of your diag folder: ")
+    while not (folder in folders):
+        print("Diag bundle " + folder + " not found.")
+        folder = input("Please input the name of your diag folder: ")
 
 file = open("./" + folder + "/center-type", 'r')
 line = file.readlines()
@@ -208,6 +212,6 @@ file = open(file_name, 'w')
 file.writelines(string)
 file.close()
 
-print("Diagnostic File Report in this directory: " + str(Path.cwd()))
+print("Using diag bundle " + folder + ", Diagnostic File Report in this directory: " + str(Path.cwd()))
 
 time.sleep(5)
