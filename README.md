@@ -1,6 +1,6 @@
 # Cisco Cyber Vision API Scripts
 
-This is a collection of Python scripts with Cyber Vision API queries to generate custom reports.  The Python scripts are packaged as standalone executables that will run on Windows workstations, so there is no need to install Python on the Cyber Server or on the Windows workstation. 
+This is a collection of Python scripts with Cyber Vision API queries to generate custom reports.   
 
 These files must be run on a Windows device with IP access to the Cyber Vision Center.  It will prompt for a valid API key and IP address of CV Center.
 
