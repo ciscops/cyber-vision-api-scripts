@@ -28,7 +28,7 @@ file = open("./" + folder + "/center-type", 'r')
 line = file.readlines()
 file.close()
 
-string = "----- System Info -----" + "\n" + "\n" + "Center Type: " + line[0] + "\n" + "Extensions:" + "\n"
+string = "-------------------- System Info --------------------" + "\n" + "\n" + "Center Type: " + line[0] + "\n" + "Extensions:" + "\n"
 
 file = open("./" + folder + "/sbs-extension-list", 'r')
 lines = file.readlines()
@@ -37,7 +37,7 @@ file.close()
 for line in lines:
     string += line
 
-string += "\n" + "----- Network Info -----" + "\n" + "\n" + "IP Address: " + "\n"
+string += "\n" + "-------------------- Network Info --------------------" + "\n" + "\n" + "IP Address: " + "\n"
 
 file = open("./" + folder + "/ip_addr", 'r')
 lines = file.readlines()
@@ -63,6 +63,8 @@ file.close()
 
 start = -1
 end = -1
+
+# eth0 and eth1 might not be on lines 2 and 3 (there may be more eths too)
 
 for i in range(len(lines)):
     line = lines[i]
@@ -104,7 +106,7 @@ file.close()
 for line in lines:
     string += "\t" + line
 
-string += "\n" + "----- Process Info -----" + "\n" + "\n" + "Top 10: " + "\n"
+string += "\n" + "-------------------- Process Info --------------------" + "\n" + "\n" + "Top 10: " + "\n"
 
 file = open("./" + folder + "/top", 'r')
 lines = file.readlines()
@@ -125,7 +127,7 @@ file.close()
 for line in lines:
     string += "\t" + line
 
-string += "\n" + "----- Memory, Storage & DB Info -----" + "\n" + "\n" + "Memory:" + "\n"
+string += "\n" + "-------------------- Memory, Storage & DB Info --------------------" + "\n" + "\n" + "Memory:" + "\n"
 
 file = open("./" + folder + "/memory", 'r')
 lines = file.readlines()
@@ -157,7 +159,7 @@ for line in lines:
         break
     count += 1
 
-string += "\n" + "----- Sensor Info -----" + "\n" + "\n" + "Sensor List:" + "\n"
+string += "\n" + "-------------------- Sensor Info --------------------" + "\n" + "\n" + "Sensor List:" + "\n"
 
 file = open("./" + folder + "/sbs_sensor_list", 'r')
 lines = file.readlines()
@@ -166,7 +168,7 @@ file.close()
 for line in lines:
     string += "\t" + line
 
-string += "----- System Configuration -----" + "\n" + "\n" + "Data Ingestion:" + "\n"
+string += "-------------------- System Configuration --------------------" + "\n" + "\n" + "Data Ingestion:" + "\n"
 
 file = open("./" + folder + "/conf/ingestion", 'r')
 lines = file.readlines()
@@ -184,7 +186,7 @@ file.close()
 for line in lines:
     string += "\t" + line
 
-string += "\n" + "\n" + "----- IDS Info -----" + "\n" + "\n" + "Status:" + "\n"
+string += "\n" + "\n" + "-------------------- IDS Info --------------------" + "\n" + "\n" + "Status:" + "\n"
 
 file = open("./" + folder + "/conf/snort/enabled_status", 'r')
 lines = file.readlines()
