@@ -17,13 +17,13 @@ There are two methods that can be used to run these python scripts on a Windows 
 
 ```cred-var```: This file will generate a report with only two worksheets: Credentials and Variables. The values for both devices and components will be on the same worksheet.
 
-```find-kevs```: This file will generate an HTML report of the known exploited vulnerabilities on your network. You must use Cyber Vision to generate a vulnerability report and put that CSV report in the same directory as this file when you run it.
+```find-kevs```: This utility will download the latest available list of Known Exploited Vulneratbilities from CISA and compare it with a list of vulnerabilities on the local CV system to generate a list of KEVs for the local system.
 
 ```security-insights```: This file will generate a security insights summary report.
 
 ```security-insights-details```: This file will generate a detailed security insights report for DNS, HTTP & SMB with individual component details and request counts.
 
-```diag-file-parser```: This file will generate a summary report of key items from a complete Cyber Vision Center diagnostic bundle.  
+```diag-file-parser```: This utility will generate a summary report of key items from a complete Cyber Vision Center diagnostic bundle.  
 
   &nbsp; &nbsp; **Instructions:** 
   1) Generate and download a diagnostic bundle from the Cyber Vision Center.
