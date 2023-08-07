@@ -1,10 +1,23 @@
 from pathlib import Path
 import time
 from datetime import datetime
+import os
 
-folder = input("Please input the name of your diag folder: ")
+folders = []
 
-while len(folder) == 0 or len(folder.replace(" ", "")) == 0:
+folder = ""
+
+rootdir = str(Path.cwd())
+for it in os.scandir(rootdir):
+    if it.is_dir():
+        folders.append(it.path)
+        break
+
+for name in folders:
+    if "sbs-diag" in name:
+        folder = name[name.rindex('\\')+1:len(name)]
+
+if len(folder) == 0:
     folder = input("Please input the name of your diag folder: ")
 
 file = open("./" + folder + "/center-type", 'r')
