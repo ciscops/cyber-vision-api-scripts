@@ -22,4 +22,4 @@ Files will be output to the current working directory where the scripts are exec
 
 ## Make Your Own Executables
 
-If you're interested in making your own executables, you can use (Pyinstaller)[https://pypi.org/project/pyinstaller/].
+If you're interested in making your own executables, you can use [Pyinstaller](https://pypi.org/project/pyinstaller/).
