@@ -18,7 +18,15 @@ Files will be output to the current working directory where the scripts are exec
 
 ```security-insights-details```: This file will generate a detailed security insights report for DNS, HTTP & SMB with individual component details and request counts.
 
-```diag-file-parser```: This file will generate a summary diagnostic report. You must use Cyber Vision to generate the diagnostic file folder and put the unzipped folder in the same directory as this file when you run it.
+```diag-file-parser```: This file will generate a summary report of key items from a complete Cyber Vision Center diagnostic bundle.  
+
+Instructions: 
+  1) Download a diagnostic bundle from the Cyber Vision Center
+  2) Unpack the .tgz diagnostic bundle, then unpack the .tar archive, which will result in a folder named 'sbs-diag-export-yyyymmddhhmmss'. 
+  3) Execute this utility from the same directory where you placed the diagnostic bundle
+  4) When the utility completes, a summary report will be saved as a .txt file to the same directory.
+
+You must use Cyber Vision to generate the diagnostic file folder and put the unzipped folder in the same directory as this file when you run it.
 
 ## Make Your Own Executables
 
