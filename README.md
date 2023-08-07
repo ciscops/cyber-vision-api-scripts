@@ -6,6 +6,11 @@ These files must be run on a Windows device with IP access to the Cyber Vision C
 
 Files will be output to the current working directory where the scripts are executed.
 
+## Requirements
+There are two methods that can be used to run these python scripts on w Windows host:
+1. Download & install Python from Python.org and install it on your Windows host
+2. Package the scripts as standalone .EXE files using Pyinstaller (see below)
+
 ## File Descriptions
 
 ```cred-var-separated```: This file will generate an Excel file with a credentials and variables report with separate worksheets for devices and components.
