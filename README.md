@@ -18,3 +18,7 @@ Files will be output to the current working directory where the scripts are exec
 ```security-insights```: This file will generate a security insights summary report.
 
 ```security-insights-details```: This file will generate a detailed security insights report for DNS, HTTP & SMB with individual component details and request counts.
+
+## Make Your Own Executables
+
+If you're interested in making your own executables, you can use (Pyinstaller)[https://pypi.org/project/pyinstaller/].
