@@ -277,8 +277,16 @@ if(os.path.isfile(directory + '\\' + folder + '\\filesystem')):
     lines = file.readlines()
     file.close()
 
+    percent = 0
+
     for line in lines:
         string += "\t" + line
+        if line[-6:] == "/data\n":
+            i = line.index("%")
+            percent = int(line[i-3:i])
+           
+    if percent > 50:
+        string += "\n" + "NOTE: /data partition greater than 50%" + "\n"
 else:
     string += "File system file not found in diag bundle." + "\n" + "\n"
 
