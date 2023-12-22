@@ -42,7 +42,59 @@ def get():
 
         smb = r_get.json()
 
-        return [dns, http, smb]
+        r_get = requests.get(f"https://{center_ip}:{center_port}/{center_base_url}/version",headers=headers,verify=False)
+        r_get.raise_for_status() #if there are any request errors
+
+        version = r_get.json()
+
+        external = {"devices": [], "components": []}
+
+        if version["major"] == 4 and version["minor"] == 3:
+            r_get = requests.get(f"https://{center_ip}:{center_port}/{center_base_url}/devices",headers=headers,verify=False)
+            r_get.raise_for_status() #if there are any request errors
+
+            devices = r_get.json()
+
+            r_get = requests.get(f"https://{center_ip}:{center_port}/{center_base_url}/components",headers=headers,verify=False)
+            r_get.raise_for_status() #if there are any request errors
+
+            components = r_get.json()
+            
+            for device in devices:
+                if device["externalCommunicationsCount"] > 0:
+                    r_get = requests.get(f"https://{center_ip}:{center_port}/{center_base_url}/devices/{device['id']}/externalCommunications",headers=headers,verify=False)
+                    r_get.raise_for_status() #if there are any request errors
+
+                    temp = r_get.json()
+
+                    device_data = {'label': device['label'], 'timestamp': 0, 'count': 0, 'ip': temp[0]['sourceIP'], 'mac': device['mac'], 'volume': 0}
+
+                    for activity in temp:
+                        if activity['lastSeen'] > device_data['timestamp']:
+                            device_data['timestamp'] = activity['lastSeen']
+                        device_data['count'] += 1
+                        device_data['volume'] += activity['sentByDevice']
+
+                    external['devices'].append(device_data)
+
+            for component in components:               
+                 if component["externalCommunicationsCount"] > 0:
+                    r_get = requests.get(f"https://{center_ip}:{center_port}/{center_base_url}/components/{component['id']}/externalCommunications",headers=headers,verify=False)
+                    r_get.raise_for_status() #if there are any request errors
+
+                    temp = r_get.json()
+
+                    component_data = {'label': component['label'], 'timestamp': 0, 'count': 0, 'ip': temp[0]['sourceIP'], 'mac': component['mac'], 'volume': 0}
+
+                    for activity in temp:
+                        if activity['lastSeen'] > component_data['timestamp']:
+                            component_data['timestamp'] = activity['lastSeen']
+                        component_data['count'] += 1
+                        component_data['volume'] += activity['sentByDevice']
+
+                    external['components'].append(component_data)
+
+        return [dns, http, smb, external]
 
     except Exception as e:
         return f"Error when connecting: {e}"
@@ -94,6 +146,46 @@ for smb in data[2]:
     sheet3.write(index, 1, smb['value'])
     sheet3.write(index, 2, smb['componentsCount'])
     index += 1
+
+if len(data[3]["devices"]) > 0 or len(data[3]["components"]) > 0:
+    sheet4 = workbook.add_worksheet("External Communication")
+    index = 1
+
+    if len(data[3]['devices']) > 0:
+        sheet4.write(0, 0, 'Device')
+        sheet4.write(0, 1, 'IP')
+        sheet4.write(0, 2, 'MAC')
+        sheet4.write(0, 3, 'Count')
+        sheet4.write(0, 4, "Last Activity")
+        sheet4.write(0, 5, "Data Volume")
+        for device in data[3]['devices']:
+            sheet4.write(index, 0, device['label'])
+            sheet4.write(index, 1, device['ip'])
+            sheet4.write(index, 2, device['mac'])
+            sheet4.write(index, 3, device['count'])
+            sheet4.write(index, 4, datetime.fromtimestamp(device['timestamp']//1000).strftime("%b %d, %Y %I:%M:%S %p"))
+            sheet4.write(index, 5, device['volume'])
+            index += 1
+        index += 1
+    else:
+        index = 0
+
+    if len(data[3]["components"]) > 0:
+        sheet4.write(index, 0, 'Component')
+        sheet4.write(index, 1, 'IP')
+        sheet4.write(index, 2, 'MAC')
+        sheet4.write(index, 3, 'Count')
+        sheet4.write(index, 4, "Last Activity")
+        sheet4.write(index, 5, "Data Volume")
+        index += 1
+        for component in data[3]["components"]:
+            sheet4.write(index, 0, component['label'])
+            sheet4.write(index, 1, component['ip'])
+            sheet4.write(index, 2, component['mac'])
+            sheet4.write(index, 3, component['count'])
+            sheet4.write(index, 4, datetime.fromtimestamp(component['timestamp']//1000).strftime("%b %d, %Y %I:%M:%S %p")) 
+            sheet4.write(index, 5, component['volume'])
+            index += 1
 
 workbook.close()
 
